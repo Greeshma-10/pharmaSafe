@@ -14,7 +14,7 @@ const severityOptions = [
 const createCaseSchema = z.object({
   drugName: z.string().min(2, "Drug name is required"),
   eventDescription: z.string().min(10, "Please provide more detail (min 10 characters)"),
-  severity: z.coerce.number().min(0).max(3),
+  severity: z.number().min(0).max(3),
 });
 
 type CreateCaseFormValues = z.infer<typeof createCaseSchema>;
@@ -87,9 +87,9 @@ function CreateCaseForm() {
           Severity
         </label>
         <select
-          {...register("severity")}
-          className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white"
-        >
+  {...register("severity", { valueAsNumber: true })}
+  className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white"
+>
           {severityOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>
               {opt.label}
