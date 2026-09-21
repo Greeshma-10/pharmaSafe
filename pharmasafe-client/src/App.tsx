@@ -5,6 +5,7 @@ import CasesPage from "./pages/CasesPage";
 import ProtectedRoute from "./features/auth/ProtectedRoute";
 import CaseDetailPage from "./pages/CaseDetailPage";
 import DashboardPage from "./pages/DashboardPage";
+// CI trigger test
 
 function App() {
   return (
