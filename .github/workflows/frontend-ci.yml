@@ -1,0 +1,38 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pharmasafe-client/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'pharmasafe-client/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: pharmasafe-client/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: pharmasafe-client
+
+      - name: Lint
+        run: npm run lint
+        working-directory: pharmasafe-client
+
+      - name: Build
+        run: npm run build
+        working-directory: pharmasafe-client
