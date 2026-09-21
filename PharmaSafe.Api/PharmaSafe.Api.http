@@ -1,0 +1,6 @@
+@PharmaSafe.Api_HostAddress = http://localhost:5239
+
+GET {{PharmaSafe.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

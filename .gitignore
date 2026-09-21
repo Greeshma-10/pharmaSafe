@@ -1,0 +1,18 @@
+# .NET
+**/bin/
+**/obj/
+*.db
+*.db-shm
+*.db-wal
+
+# Node / React
+**/node_modules/
+**/dist/
+
+# Editor
+.vs/
+.vscode/*
+!.vscode/extensions.json
+
+# Secrets
+**/appsettings.Development.json
