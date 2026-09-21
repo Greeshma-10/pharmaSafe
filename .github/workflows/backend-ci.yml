@@ -5,10 +5,12 @@ on:
     branches: [main]
     paths:
       - 'PharmaSafe.Api/**'
+      - 'PharmaSafe.Api.Tests/**'
   pull_request:
     branches: [main]
     paths:
       - 'PharmaSafe.Api/**'
+      - 'PharmaSafe.Api.Tests/**'
 
 jobs:
   build:
@@ -30,3 +32,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --configuration Release
         working-directory: PharmaSafe.Api
+
+      - name: Test
+        run: dotnet test --configuration Release
+        working-directory: PharmaSafe.Api.Tests
