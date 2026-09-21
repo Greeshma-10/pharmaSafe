@@ -1,0 +1,32 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'PharmaSafe.Api/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'PharmaSafe.Api/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: PharmaSafe.Api
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+        working-directory: PharmaSafe.Api
